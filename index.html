@@ -16,9 +16,7 @@
     .frame {
       width: 100%;
       max-width: 800px;
-      border: 6px solid #cfa874;
-      background: #f6ecd8;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      /* Рамка и тень удалены */
       overflow: hidden;
     }
     #pdf-container {
@@ -48,8 +46,6 @@
     pdfjsLib.GlobalWorkerOptions.workerSrc = 
       'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-    // Загружаем PDF как бинарные данные через fetch,
-    // а не по прямой ссылке — браузер не покажет кнопку "открыть/скачать"
     fetch('menustaffbar.pdf')
       .then(function(response) {
         return response.arrayBuffer();
@@ -60,10 +56,8 @@
       .then(function(pdf) {
         document.getElementById('loading').style.display = 'none';
         const container = document.getElementById('pdf-container');
-        const totalPages = pdf.numPages;
-        let pagesRendered = 0;
 
-        for (let i = 1; i <= totalPages; i++) {
+        for (let i = 1; i <= pdf.numPages; i++) {
           pdf.getPage(i).then(function(page) {
             const viewport = page.getViewport({ scale: 2 });
             const canvas = document.createElement('canvas');
