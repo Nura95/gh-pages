@@ -1,19 +1,54 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Просмотр PDF</title>
-    <style>
-        body { margin: 0; padding: 0; overflow: hidden; }
-        iframe {
-            width: 100%;
-            height: 100vh;
-            border: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Меню Staff Bar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+    .frame {
+      width: 90%;
+      max-width: 800px;
+      border: 6px solid #cfa874;
+      background: #f6ecd8;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      text-align: center;
+      padding: 40px 20px;
+    }
+    h2 {
+      color: #554435;
+      margin-bottom: 20px;
+    }
+    .btn {
+      background: #8b5a2b;
+      color: white;
+      padding: 18px 32px;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #6d4521;
+    }
+  </style>
 </head>
 <body>
-    <iframe src="menustaffbar.pdf#toolbar=0&navpanes=0" loading="lazy"></iframe>
+  <div class="frame">
+    <h2>Меню Staff Bar</h2>
+    <p>Нажмите кнопку, чтобы открыть меню</p>
+    <a href="menustaffbar.pdf" target="_blank" class="btn">Открыть меню</a>
+  </div>
 </body>
 </html>
