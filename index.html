@@ -4,63 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Меню</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <style>
     body {
       margin: 0;
       padding: 0;
       background: #f2f2f2;
-      display: flex;
-      justify-content: center;
     }
     .frame {
       width: 100%;
       max-width: 800px;
+      margin: 0 auto;
       border: 6px solid #cfa874;
       background: #f6ecd8;
       box-shadow: 0 12px 30px rgba(0,0,0,0.15);
       overflow: hidden;
     }
-    #pdf-container {
+    iframe {
       width: 100%;
-    }
-    #pdf-container canvas {
-      width: 100%;
-      height: auto;
+      height: 100vh;
+      border: none;
       display: block;
     }
   </style>
 </head>
 <body>
   <div class="frame">
-    <div id="pdf-container"></div>
+    <iframe 
+      src="https://docs.google.com/viewer?url=https://nura95.github.io/gh-pages/menustaffbar.pdf&embedded=true" 
+      allowfullscreen>
+    </iframe>
   </div>
-
-  <script>
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 
-      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-    const pdfUrl = 'menustaffbar.pdf';
-    const container = document.getElementById('pdf-container');
-
-    pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
-      for (let i = 1; i <= pdf.numPages; i++) {
-        pdf.getPage(i).then(function(page) {
-          const viewport = page.getViewport({ scale: 2 });
-          const canvas = document.createElement('canvas');
-          canvas.width = viewport.width;
-          canvas.height = viewport.height;
-          container.appendChild(canvas);
-          page.render({
-            canvasContext: canvas.getContext('2d'),
-            viewport: viewport
-          });
-        });
-      }
-    }).catch(function(error) {
-      container.innerHTML = '<p style="text-align:center;padding:40px;">Не удалось загрузить меню. Попробуйте позже.</p>';
-    });
-  </script>
 </body>
 </html>
 
